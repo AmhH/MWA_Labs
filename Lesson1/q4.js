@@ -4,11 +4,11 @@ class BMICalculator{
         this.height = height;
         this.weight = weight;
     }
-    calculateBMIMetric() {
+    calculateBMIMetric() {//weight in kg and heights in meter
         const result = (weight.value) / Math.pow(height.value, 2);
         return result;
     }
-    calculateBMIEnglish() {
+    calculateBMIEnglish() {//weight in pounds(lb) and heights in feet
         const result = ((weight.value) / Math.pow((height.value * 12), 2)) * 703.0704;
         return result;
     }
