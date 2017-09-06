@@ -1,0 +1,22 @@
+#1). because sometimes setImmediate is faster than setTimeout, this is because setTimeout is calling the function 
+after delay has finished and after the event loop reached to Timer after checking all the other phases by their order. 
+(eg. if the event loop was at I/O callbacks phase when time is over the event loop go through all the other phases and 
+come back to Timer phase to send it to V8 engine). But, setImmediate puts callback function int the check phase, in this
+if the event loop is working on other phases other than close callbacks phase it will be faster to get to check phase than 
+Timer phase.  So it is faster.
+
+#2) setImmediate queue the function in the check phase and depending on where the event loop is working it has to wait for a 
+some time to bee executed in V8 until it reaches check phase . 
+
+process.nextTick queue the function at nextTick queue , and it executes immediately after the current function completes.
+
+#3) buffer
+    module
+    setInterval
+    querystring
+    console
+    process
+    https
+    root
+    Infinity
+    JSON

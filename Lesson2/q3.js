@@ -10,10 +10,14 @@ function slow(callback) {
 function exec(fn) {
     return {
         done: function (fnDone){
-
+            if(fn.id){
+                fnDone(fn.id);
+            }
         },
         fail: function (fnFail){
-
+            if(fn){
+                
+            }
         }
     }
 }
