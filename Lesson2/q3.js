@@ -1,9 +1,9 @@
 function slow(callback) {
     setTimeout(function () {
         if (Math.random() > 0.5) {
-            return callback("Error: Couldn't get the data", null);
+            return process.nextTick(callback("Error: Couldn't get the data", null));
         }
-        callback(null, {id: 12345 });
+        process.nextTick(callback(null, {id: 12345 }));
     }, 1000);
 }
 
@@ -14,7 +14,6 @@ function exec(fn) {
             failProp = function (failFn){
                 failFn(message);
             }
-            doneProp = function(){};
         } else {
             doneProp = function (doneFn){
                 doneFn(data.id);
