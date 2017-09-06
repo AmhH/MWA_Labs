@@ -17,7 +17,7 @@ const add = (a, b) => {
 console.log('start');
 const A = add(1,2);
 const B = add(2,3);
-console.log('end');*/
+console.log('end');
 
 const add = (a, b) => {
     return setTimeout(()=>{console.log(a+b)}, 0);
@@ -26,4 +26,4 @@ const add = (a, b) => {
 console.log('start');
 const A = add(1,2);
 const B = add(2,3);
-console.log('end');
+console.log('end');*/

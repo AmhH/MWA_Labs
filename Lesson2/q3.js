@@ -8,17 +8,24 @@ function slow(callback) {
 }
 
 function exec(fn) {
-    return {
-        done: function (fnDone){
-            if(fn.id){
-                fnDone(fn.id);
+    var doneProp, failProp;
+    function callback(message, data){
+        if(message){
+            failProp = function (failFn){
+                failFn(message);
             }
-        },
-        fail: function (fnFail){
-            if(fn){
-                
+            doneProp = function(){};
+        } else {
+            doneProp = function (doneFn){
+                doneFn(data.id);
             }
         }
+    }
+
+    fn(callback);
+    return {
+        done: doneProp,
+        fail: failProp
     }
 }
 
