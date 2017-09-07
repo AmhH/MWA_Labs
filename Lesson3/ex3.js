@@ -10,4 +10,4 @@ class clock extends EventEmitter{
 }
 var obj = new clock();
 obj.on('tick', (data) => console.log(data));
-obj.tick('wohoo');
+obj.tick('woohoo');
