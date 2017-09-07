@@ -1,6 +1,7 @@
 var fs = require('fs');
 //stream one
 require('http').createServer(function(req, res){
+    //file size 72MB
                          fs.createReadStream('world.jpg').pipe(res);
                      }).listen(8080, () => console.log('Starting server ...')); 
 //stream two   
