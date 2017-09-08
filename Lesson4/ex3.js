@@ -11,5 +11,6 @@ var checkSystem = new Promise(function (resolve, reject){
     });
 
 Rx.Observable.fromPromise(checkSystem)
-             .subscribe(e => console.log(e));
+             .subscribe(e => console.log(e),
+                        err => console.error(err));
 console.log('Cheeking your system...');
