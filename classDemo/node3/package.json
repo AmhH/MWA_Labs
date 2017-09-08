@@ -8,6 +8,7 @@
   "author": "Ameha",
   "license": "ISC",
   "dependencies": {
+    "@reactivex/rxjs": "^5.4.3",
     "moment": "^2.18.1",
     "node-fetch": "^1.7.2"
   },

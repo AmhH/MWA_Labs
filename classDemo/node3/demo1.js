@@ -96,7 +96,7 @@ function* steps(){
     const grade = yield myAjax(`http://api/grade/?course=${courseId}`);
 }
 const dataGen = steps();
-dataGen.next();*/
+dataGen.next();
 
 var studied = false;
 var will = function(){
@@ -117,4 +117,29 @@ async function askMe(){
 }
 
 askMe();
-console.log('Finish')
+console.log('Finish');
+
+const {promisify} = require('util');
+const fs = require('fs');
+
+const readFileAsync = promisify(fs.readFile);
+
+readFileAsync('./package.json', {encoding: 'utf8'})
+            .then(txt => console.log('CONTENT:', txt))
+            .catch(err => console.log('ERROR:', err));*/
+
+const Rx = require('@reactivex/rxjs');
+/*var source = Rx.Observable.create(function (observer){
+                        observer.next('CS572');
+                        observer.complete();
+                    });
+var subscription = source.subscribe(x => console.log(x),
+                                   err => console.log(err),
+                                   () => console.log("done"));*/
+Rx.Observable.of(1,2,3,4,5,6)
+             .map(n => n+3)
+             .subscribe(
+                 x => console.log(x),
+                 null,
+                 () => console.log("Done")
+             );

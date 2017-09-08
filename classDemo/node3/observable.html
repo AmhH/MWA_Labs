@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Observable</title>
+    </head>
+
+    <body>
+        <button>Click</button>
+        <div></div>
+    </body>
+    <script src="https://unpkg.com/@reactivex/rxjs@6.0.0-alpha.0/dist/global/Rx.js"></script>
+    <script>
+        var clickEmitted = new Rx.BehaviorSubject('Not Clicked');
+        var button = document.querySelector('button');
+        var div = document.querySelector('div');
+
+        button.addEventListener('click', () => clickEmitted.next('clicked'));
+        clickEmitted.subscribe(value => div.textContent = value);
+    </script>
+</html>
