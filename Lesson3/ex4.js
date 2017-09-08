@@ -11,4 +11,4 @@ var read = fs.createReadStream(__dirname + '/destination.txt.gz');
 var uncomp = fs.createWriteStream(__dirname + '/unzipped.txt');
 
 read.pipe(gUnzip).pipe(uncomp);
-
+console.log(__dirname);

@@ -1,13 +1,12 @@
 function slow(callback) {
     setTimeout(function () {
         if (Math.random() > 0.5) {
-            return process.nextTick(callback("Error: Couldn't get the data", null));
+            return callback("Error: Couldn't get the data", null);
         }
-        process.nextTick(callback(null, {id: 12345 }));
+        callback(null, {id: 12345 });
     }, 1000);
 }
-
-function exec(fn) {
+/*function exec(fn) {
     var doneProp, failProp;
     function callback(message, data){
         if(message){
@@ -20,11 +19,35 @@ function exec(fn) {
             }
         }
     }
-
     fn(callback);
     return {
         done: doneProp,
         fail: failProp
+    }
+}*/
+function exec(fn) {
+    var er = "";
+    var data = "";
+    fn(function (error, obj) {
+        er = error;
+        data = obj;
+    });
+    return {
+        done: function (f) {
+            setTimeout(function () {
+                if (data) {
+                   f(data);
+                }
+            }, 500);
+            return this;
+        },
+        fail: function (f) {
+            setTimeout(function () {
+                if (er) {
+                    f(er);
+                }
+            }, 500);
+        }
     }
 }
 
