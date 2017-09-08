@@ -1,0 +1,17 @@
+{
+  "name": "node3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "demo1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ameha",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
